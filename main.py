@@ -22,7 +22,7 @@ def get_weather():
   url = "https://apis.juhe.cn/simpleWeather/query?city=%E4%B8%8A%E6%B5%B7&key=8ab1ff619f1518f8f56572b53e0122bf"
   res = requests.get(url).json()
   weather = res['result']['realtime']
-  return weather['info'], weather['temperature'])
+  return weather['info'], weather['temperature']
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
