@@ -22,7 +22,7 @@ def get_weather():
   url = "https://apis.juhe.cn/simpleWeather/query?city=%E4%B8%8A%E6%B5%B7&key=8ab1ff619f1518f8f56572b53e0122bf"
   res = requests.get(url).json()
   weather = res['result']['realtime']
-  return weather['weather'], math.floor(weather['realtime'])
+  return weather['info'], math.floor(weather['temperature'])
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
@@ -47,7 +47,7 @@ def get_random_color():
 client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
-
-data = {"city":{"value":"上海"}}
+wea, temperature = get_weather()
+data = {"city":{"value":wea}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
