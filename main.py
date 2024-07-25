@@ -48,6 +48,6 @@ client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
 
-data = {"city":{"value":"上海"}
+data = {"city":{"value":"上海"}}
 res = wm.send_template(user_id, template_id, data)
 print(res)
